@@ -3,10 +3,9 @@ import {
 	Sidebar as ProSidebar,
 	Menu,
 	MenuItem,
-	SubMenu,
 } from 'react-pro-sidebar';
 import { Box, IconButton, Typography, useTheme } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { tokens } from '../../theme';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
@@ -24,24 +23,27 @@ import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 const Item = ({ title, to, icon, selected, setSelected }) => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
+	console.log(to);
 	return (
-		<MenuItem
-			active={selected === title}
-			style={{ color: colors.grey[100] }}
-			onClick={() => setSelected(title)}
-			icon={icon}
-		>
-			<Typography>{title}</Typography>
-			<Link to={to} />
-		</MenuItem>
+		<Link to={to}>
+			<MenuItem
+				active={selected === to}
+				style={{ color: colors.grey[100] }}
+				onClick={() => setSelected(to)}
+				icon={icon}
+			>
+				<Typography>{title}</Typography>
+			</MenuItem>
+		</Link>
 	);
 };
 
 const Sidebar = () => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
+	const { pathname } = useLocation();
 	const [isCollapsed, setIsCollapsed] = useState(false);
-	const [selected, setSelected] = useState('Dashboard');
+	const [selected, setSelected] = useState(pathname);
 
 	return (
 		<Box
