@@ -10,7 +10,6 @@ import TrafficIcon from '@mui/icons-material/Traffic';
 import LineChart from '../../components/LineChart';
 import BarChart from '../../components/BarChart';
 import GeographyChart from '../../components/GeographyChart';
-import statBox from '../../components/StatBox';
 import ProgressCircle from '../../components/ProgressCircle';
 import StatBox from '../../components/StatBox';
 
@@ -249,8 +248,6 @@ const Dashboard = () => {
 						<Typography>Includes extra misc expenditures and costs</Typography>
 					</Box>
 				</Box>
-
-				{/*  */}
 				<Box
 					gridColumn={'span 4'}
 					gridRow={'span 2'}
